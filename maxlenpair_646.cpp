@@ -1,6 +1,6 @@
 class Solution {
 public:
-
+// greedy algorithm
     static bool cmpFun( vector<int> &v1,  vector<int> &v2){
         return (v1[1]<v2[1]);
     }
