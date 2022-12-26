@@ -1,3 +1,4 @@
+// approximately O(n) time complexity (TBC)
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
