@@ -28,3 +28,4 @@ vector<int> Solution::repeatedNumber(const vector<int> &B) {
     solReturn.push_back(missingIndex);
     return solReturn;
 }
+//This can be also be done using Floyd's cycle detection algorithm and then using maths to find the missing digit
