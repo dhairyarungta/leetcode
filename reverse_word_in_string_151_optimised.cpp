@@ -1,6 +1,33 @@
 #include <stack>
 #include <bits/stdc++.h>
+class Solution {
+public:
+    string reverseWords(string s) {
+        reverse(s.begin(),s.end());
+        int l = 0,r=0,i=0;
+        int n = s.size();
+        while(i<n){
+            while(s[i]!=' ' && i<n){
+                s[r++]=s[i++];            
+                }
 
+            if(r>l){
+                reverse(s.begin()+l,s.begin()+r);
+                if(r>=n)break;
+
+                s[r++]=' ';
+                l=r;
+            }
+            i++;
+        }
+        while(s[r-1]==' '&&r<=n){
+            r--;
+        }
+        s.resize(r);
+        return s;
+    }
+};
+ 
 string reverseString(string str)
 {
     // Write your code here.
