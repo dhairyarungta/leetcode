@@ -1,3 +1,8 @@
+
+
+//As per the constraints on height[i] and n, the following solution 
+// gets the answer in less than 1e9 operations per second hence it passes
+// This solution is pseudo-linear time complexity
 class Solution {
 public:
     int maxArea(vector<int>& height) {
@@ -26,5 +31,27 @@ public:
         }
         return overallMaxArea;
 
+    }
+};
+
+//The following solutino is strictly linear time compleixty, just much less intuitive than the previous approach
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int left = 0, right =height.size()-1;
+        int overallMax =INT_MIN;
+
+        while(left<right){
+            overallMax= max(overallMax,(right-left)*(min(height[left],height[right])));
+            if(height[left]<=height[right]){
+                left++;
+            }
+            else {
+                right--;
+            }
+        }
+
+        return overallMax;
     }
 };
