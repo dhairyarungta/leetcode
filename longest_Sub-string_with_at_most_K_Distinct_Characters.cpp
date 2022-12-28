@@ -1,4 +1,33 @@
 #include<bits/stdc++.h>
+
+//O(n) The one below is the cleaner version of the second code, same logic
+int getLengthofLongestSubstring(int k, string s)
+{
+   // Write your code here.
+   int n = s.size();
+   int types=0;
+   map<char, int> mp;
+   int overallMax = INT_MIN;
+   int j = 0;
+   for (int i =0;i<n;i++){
+      if(mp[s[i]]!=0){
+         mp[s[i]]++;
+      }
+      else{
+         mp[s[i]]++;types++;
+         while(types>k){
+            mp[s[j]]--;
+            if(mp[s[j]]==0)
+               types--;
+            j++;
+         }
+      }
+     overallMax= max(overallMax,i-j+1);
+   }
+   return overallMax;
+}
+
+
 int getLengthofLongestSubstring(int k, string s)
 {  map<char, int> mp;
    int n = s.size();
