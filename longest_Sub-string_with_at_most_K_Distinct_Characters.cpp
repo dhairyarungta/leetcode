@@ -10,11 +10,10 @@ int getLengthofLongestSubstring(int k, string s)
    int overallMax = INT_MIN;
    int j = 0;
    for (int i =0;i<n;i++){
-      if(mp[s[i]]!=0){
-         mp[s[i]]++;
-      }
-      else{
-         mp[s[i]]++;types++;
+     mp[s[i]]++;
+
+     if (mp[s[i]] == 1) {
+         types++;
          while(types>k){
             mp[s[j]]--;
             if(mp[s[j]]==0)
