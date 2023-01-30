@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int integerBreak(int n) {
+        int dp [n+1];
+        dp[1]=0; 
+        dp[2]=1;
+        for (int i =3;i<=n;i++){
+            int maxVal = INT_MIN;
+           for(int j=1;j<i;j++){
+               maxVal= max({maxVal,(i-j)*j,(i-j)*dp[j],dp[i-j]*j,dp[i-j]*dp[j]});
+           }
+           dp[i]= maxVal;
+            
+        }
+
+        return dp[n];
+    }
+};
