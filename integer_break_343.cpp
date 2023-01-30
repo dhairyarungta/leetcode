@@ -1,6 +1,28 @@
 // Optimised dynamic programming solution
 
+class Solution {
+public:
+    int integerBreak(int n) {
+        if(n==2){
+            return 1;
+        }
+        if(n==3)    
+            return 2;
+        
+        int power_three = (int)n/3;
+        int remainder = n%3;
 
+        if(remainder==1){
+            power_three--;
+            remainder=4;
+        }
+        else if (remainder ==0){
+            remainder = 1;
+        }
+        return (pow(3,power_three)*remainder);   
+
+            }
+};
 
 
 // Recursive Solution, bad time compelxity 
