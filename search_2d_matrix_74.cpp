@@ -1,3 +1,6 @@
+// O(n) time complexity
+// O(n) space complexity
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
