@@ -6,8 +6,8 @@ public:
         ans.push_back({});
         // cout<<ans.size()
         for (int i =0;i<nums.size();i++){
-            int numSize = ans.size();
-            for (int j =0;j<numSize;j++){
+            int ansSize = ans.size();
+            for (int j =0;j<ansSize;j++){
                 vector<int> temp = ans[j];
                 temp.push_back(nums[i]);
                 ans.push_back(temp);
