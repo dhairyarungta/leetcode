@@ -19,23 +19,30 @@ public:
 };
 
 
+// Recursive inspired from iterative approach
+class Solution {
+public:
 
-// class Solution {
-// public:
-
-//     void recFindSubsets(vector<int>&nums, vector<vector<int>>& vec, int st, int en){
-//         if(st==en){
-//             return ;
-//         }
-
+    void helperf(vector<int> &nums, vector<vector<int>>& ans, int st ){
+        if(st== nums.size()){
+            ans.push_back({});
+            return ;
+        }
+        helperf(nums,ans,st+1);
         
-
-//     }
+        int ansSize = ans.size();
+        for (int k = 0;k<ansSize;k++){
+            vector<int> temp = ans[k];
+            temp.push_back(nums[st]);
+            ans.push_back(temp);
+         }
     
-//     vector<vector<int>> subsets(vector<int>& nums) {
-//         vector<vector<int>>vec;
-//         recFindSubsets(nums,vec,0,nums.size());
-//         return vec;
 
-//     }
-// };
+
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        helperf(nums, ans,0);
+        return ans;
+    }
+};
