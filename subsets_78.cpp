@@ -1,3 +1,26 @@
+//Bit manipulation approach
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        int n = nums.size();
+        // value of ans size is 2^n;
+        int ansSize = 1<<n;
+
+        for (int i = 0; i<ansSize;i++){
+            vector<int> temp;
+            for (int j =0;j<nums.size();j++){
+                if((i>>j)&1){
+                    temp.push_back(nums[j]);
+                }
+            }
+            ans.push_back(temp);
+        }
+        return ans;
+    }
+};
+
+
 //Iterative Solution
 class Solution {
 public:
@@ -17,7 +40,6 @@ public:
         return ans;
     }
 };
-
 
 // Recursive inspired from iterative approach
 class Solution {
