@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//Recursive
 class Solution {
 public:
 
@@ -28,3 +30,5 @@ public:
 
     }
 };
+
+//Iterative
