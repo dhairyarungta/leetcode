@@ -8,6 +8,38 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+//Clean Solution
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* temp1 = l1, *temp2 = l2;
+        ListNode* newHead = new ListNode(0);
+        int carry = 0;
+        ListNode* cur = newHead;
+        while(temp1!=nullptr || temp2!= nullptr || carry!=0){
+            int x = (temp1==nullptr)?0:temp1 ->val;
+            int y = (temp2==nullptr)?0:temp2->val;
+            int sum = x+y+carry;
+            ListNode* addNode = new ListNode(sum%10);
+            cur->next = addNode;
+            carry =sum/10;
+
+            temp1 = (temp1==nullptr)?nullptr:temp1->next;
+            temp2 = (temp2==nullptr)?nullptr:temp2->next;
+            cur= addNode;
+        }
+
+        return newHead->next;
+    }
+};
+
+
+
+//Iterative
+// Explicitly take care of case when one list is longer than the other 
+// and if carry at the end is non zero
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -49,7 +81,7 @@ public:
             ListNode* addNode = new ListNode(carry);
             cur->next = addNode;
         }
-        
+
         return newHead;
     }
 };
