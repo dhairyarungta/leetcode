@@ -43,15 +43,13 @@ public:
             cur->next = addNode;
             cur = addNode;
             temp = temp->next;
-
-
         }
+
         if(carry!=0){
             ListNode* addNode = new ListNode(carry);
             cur->next = addNode;
         }
-
-
+        
         return newHead;
     }
 };
