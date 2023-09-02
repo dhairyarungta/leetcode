@@ -40,6 +40,6 @@ int main(){
         // for (int j =  0;j<10;j++)
         //     cout<<dp[0][3]<<" ";
 
-    cout<<dp[0][5];
+    cout<<dp[0][2];
 
 }
