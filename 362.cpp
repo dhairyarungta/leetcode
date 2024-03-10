@@ -31,4 +31,39 @@ public:
  * HitCounter* obj = new HitCounter();
  * obj->hit(timestamp);
  * int param_2 = obj->getHits(timestamp);
+ */`
+
+
+
+ //using queue 
+ class HitCounter {
+    queue<int> hits;
+
+public:
+    HitCounter() {
+        
+    }
+    
+    void hit(int timestamp) {
+        this->hits.push(timestamp);
+    }
+    
+    int getHits(int timestamp) {
+        while(!hits.empty()){
+            if(hits.front()<=(timestamp-300)){
+                hits.pop();
+            }
+            else{
+                break;
+            } 
+        }
+        return hits.size();
+    }
+};
+
+/**
+ * Your HitCounter object will be instantiated and called as such:
+ * HitCounter* obj = new HitCounter();
+ * obj->hit(timestamp);
+ * int param_2 = obj->getHits(timestamp);
  */
