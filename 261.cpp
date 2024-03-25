@@ -12,10 +12,17 @@ class DisjointSet{
     }
 
     int find(int x){
-        if(x==root[x])
-            return x;
-
-        return root[x] = find(root[x]);
+        int node=x;
+        while(node!=root[node]){
+            node = root[node];
+        }
+        int oldroot;    
+        while(x!=node){
+            oldroot = root[x];
+            root[x]=node;
+            x = oldroot;
+        }
+        return node;/
     }
 
     bool union_func(int x, int y){
