@@ -43,6 +43,8 @@ class Solution {
 
 public:
     bool validTree(int n, vector<vector<int>>& edges) {
+	if(edges.size()!=n-1)
+		return false;
         int numComp = n;
         DisjointSet dsu(n,edges);
         for(auto i:edges){
