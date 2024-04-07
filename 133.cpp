@@ -35,6 +35,7 @@ public:
         stack<Node*>st;
         unordered_map<int,Node*>mp;
         st.push(node);
+        unordered_map<int,set<int>>neigh;
        
         while(!st.empty()){
             Node* curNode = st.top();
@@ -59,8 +60,12 @@ public:
                   //  (tempNodeInsert->neighbors).push_back(newNode);
                 }
                 vector<Node*>& ref= newNode->neighbors;
-                if(std::find(ref.begin(),ref.end(),mp[node->val])==ref.end())
+                //if(std::find(ref.begin(),ref.end(),mp[node->val])==ref.end())
+                if(!neigh[newNode->val].contains(node->val)){
+
                     (newNode->neighbors).push_back(mp[node->val]);
+                    neigh[newNode->val].insert(node->val);
+                }
             }
         }
 //        for(auto [i,node]: mp){
