@@ -1,0 +1,50 @@
+class LogSystem {
+public:
+    unordered_map<string,int>lengths = {{"Year",4},{"Month",7},{"Day",10},{"Hour",13},{"Minute",16},{"Second",19}} ;
+    unordered_map<string,string>mpStart =
+     {{"Year",":01:01:00:00:00"},{"Month",":01:00:00:00"},{"Day",":00:00:00"},{"Hour","00:00"},{"Minute",":00"},{"Second",""}} ;
+    unordered_map<string,string>mpEnd =
+     {{"Year",":12:31:23:59:59"},{"Month",":31:23:59:59"},{"Day",":23:59:59"},{"Hour",":59:59"},{"Minute",":59"},{"Second",""}} ;
+
+    long long convertToTime(string timestamp){
+       std::erase(timestamp,':');
+        cout<<timestamp<<'\n';
+        long long time = stoll(timestamp);
+        return time;
+    }
+
+    map<long long, int>timeToId;
+    LogSystem() {
+        
+    }
+    
+    void put(int id, string timestamp) {
+        long long time = convertToTime(timestamp);
+        timeToId[time] = id;
+    }
+    
+    vector<int> retrieve(string start, string end, string granularity) {
+        int idx = lengths[granularity];
+        string stSuf = mpStart[granularity];
+        string endSuf = mpEnd[granularity];
+        start = start.substr(0,idx)+stSuf;
+        end = end.substr(0,idx)+endSuf;
+        long long startTime = convertToTime(start);
+        long long endTime = convertToTime(end);
+        auto startIt = timeToId.lower_bound(startTime);
+        auto endIt = timeToId.upper_bound(endTime);
+        vector<int>ans;
+        for (auto it = startIt;it!=endIt;it++){
+            ans.push_back(it->second) ;
+
+        }
+        return ans;
+    }
+};
+
+/**
+ * Your LogSystem object will be instantiated and called as such:
+ * LogSystem* obj = new LogSystem();
+ * obj->put(id,timestamp);
+ * vector<int> param_2 = obj->retrieve(start,end,granularity);
+ */
